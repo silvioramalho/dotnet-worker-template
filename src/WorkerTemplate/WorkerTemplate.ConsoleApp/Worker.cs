@@ -24,7 +24,7 @@ namespace WorkerTemplate.ConsoleApp
             while (!stoppingToken.IsCancellationRequested)
             {
                 var workers = new List<Task>();
-                for (int i = 0; i < _workerParams.WorkersNumber; i++)
+                for (var i = 0; i < _workerParams.WorkersNumber; i++)
                 {
                     workers.Add(RunAsync(i, stoppingToken));
                 }

@@ -10,7 +10,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
         var workerParams = new WorkerParams()
         {
             //DBConnection = hostContext.Configuration.GetConnectionString("DBConnection"),
-            WorkerIntervalActive = int.Parse(hostContext.Configuration["WorkerIntervalActive"]),
+            WorkerIntervalActive = int.Parse(hostContext.Configuration["WorkerIntervalActive"] ?? throw new InvalidOperationException()),
             WorkersNumber = hostContext.Configuration["WorkersNumber"] == null ? 1 : int.Parse(hostContext.Configuration["WorkersNumber"])
         };
         services.AddSingleton<WorkerParams>(workerParams);
